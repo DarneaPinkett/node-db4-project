@@ -24,6 +24,13 @@ exports.up = function(knex) {
       tbl.increments();
       tbl.string("Name", 128)
       .notNullable();
+      tbl.integer('recipe_id')
+      .unsigned()
+      .notNullable()
+      .references('id')
+      .inTable('recipes')
+      .onUpdate('CASCADE')
+      .onDelete('CASCADE');
   });
 };
 

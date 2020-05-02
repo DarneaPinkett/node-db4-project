@@ -6,6 +6,7 @@ function getRecipes() {
 
 function getShoppingList(id) {
     return db("recipes")
+    .join("ingredients", "recipes.id", "ingredients.recipe_id")
     .select("ingredients.Name")
     .where({"recipes.id": id});
 }
